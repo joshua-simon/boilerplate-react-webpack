@@ -1,8 +1,19 @@
-import React from 'react'
+import React from "react"
+import Header from './Header'
+import MemeGen from './MemeGen'
+import Comment from './Comment'
 
-const App = () => {
+function App() {
   return (
-    <h1>React development has begun!</h1>
+    <div>
+      <Header />
+      <br />
+      <br />
+      <MemeGen />
+      <br/>
+      <br />
+      <Comment/>
+    </div>
   )
 }
 
