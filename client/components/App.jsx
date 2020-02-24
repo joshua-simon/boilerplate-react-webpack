@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { getMemes } from '../api'
 import Memes from './Memes'
+import Input from './Input'
 
 class App extends Component {
   constructor() {
@@ -12,6 +13,7 @@ class App extends Component {
       currentMeme: {}
     }
     this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
 
@@ -36,12 +38,21 @@ class App extends Component {
     })
   }
 
+  handleChange(e) {
+    this.setState({
+        text: e.target.value
+    })
+}
+
   render() {
     return (
 
       <div>
         <div>
           <h1 className='title'>Craft Memes</h1>
+        <div onChange = {this.handleChange}>
+          <Input />
+        </div>
           <br />
           <br />
           {this.state.memes.map(meme => {

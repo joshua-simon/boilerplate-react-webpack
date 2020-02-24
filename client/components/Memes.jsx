@@ -14,8 +14,8 @@ class Memes extends Component {
     console.log(this.props)
     return (
       <div>
-        <h1>Description display</h1>
-        <p>{this.props.description}</p>
+
+        <h2>{this.props.description}</h2>
       </div>
     )
   }
