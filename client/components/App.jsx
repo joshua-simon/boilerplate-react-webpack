@@ -1,18 +1,19 @@
 import React, { Component } from "react"
-import Header from './Header'
-import MemeGen from './MemeGen'
-import Comment from './Comment'
 import { getMemes } from '../api'
-import DescriptionDisp from './DescriptionDisp'
+import Memes from './Memes'
 
 class App extends Component {
   constructor() {
     super()
 
     this.state = {
-      memes: []
+      memes: [],
+      description: false,
+      currentMeme: {}
     }
+    this.handleClick = this.handleClick.bind(this)
   }
+
 
 
   componentDidMount() {
@@ -20,32 +21,44 @@ class App extends Component {
       .then(memesData => {
         // console.log(memesData) console log is working
         this.setState({
-          memes: memesData
+          memes: memesData,
+
         })
       })
   }
 
-//is there a better place to put map?
-
+  handleClick(meme) {
+    this.setState(prevState => {
+      return {
+        description: !prevState.description,
+        currentMeme: meme
+      }
+    })
+  }
 
   render() {
     return (
+
       <div>
         <div>
-       <h1 className ='title'>Craft Memes</h1>
-       <br />
-       <br />
-       {this.state.memes.map(memes =>{
-         return <img className = 'photos' src = {memes.photo}/>
-                
-       })
-      }
+          <h1 className='title'>Craft Memes</h1>
+          <br />
+          <br />
+          {this.state.memes.map(meme => {
+            return (
+              <div>
+                <img className='photos' src={meme.photo} onClick={() => this.handleClick(meme)} />
+
+              </div>
+            )
+          })
+          }
+        </div>
+        <div className='DisplayDiv' >
+          {this.state.description ? <Memes description={this.state.currentMeme.description} /> : null}
+        </div>
       </div>
-      <div className = 'DisplayDiv'>
-     <DescriptionDisp />
-     </div>
-      </div>
-      
+
     )
   }
 
