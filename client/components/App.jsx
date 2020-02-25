@@ -13,7 +13,7 @@ class App extends Component {
       currentMeme: {}
     }
     this.handleClick = this.handleClick.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+   
   }
 
 
@@ -38,11 +38,7 @@ class App extends Component {
     })
   }
 
-  handleChange(e) {
-    this.setState({
-        text: e.target.value
-    })
-}
+
 
   render() {
     return (
@@ -50,7 +46,7 @@ class App extends Component {
       <div>
         <div>
           <h1 className='title'>Craft Memes</h1>
-        <div onChange = {this.handleChange}>
+        <div>
           <Input />
         </div>
           <br />

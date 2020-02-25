@@ -13,7 +13,7 @@ class Memes extends Component {
   render() {
     console.log(this.props)
     return (
-      <div>
+      <div className = 'title'>
 
         <h2>{this.props.description}</h2>
       </div>
